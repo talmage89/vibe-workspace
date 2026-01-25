@@ -27,7 +27,7 @@ COPY scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod 755 /usr/local/bin/entrypoint.sh && \
     mkdir -p /workspace && \
     chown -R claude:claude /workspace && \
-    touch /home/claude/.bash_history && \
+    mkdir -p /home/claude/.bash.d && \
     mkdir -p /home/claude/.ssh && chmod 700 /home/claude/.ssh && \
     mkdir -p /home/claude/.claude && chmod 700 /home/claude/.claude && \
     chown -R claude:claude /home/claude

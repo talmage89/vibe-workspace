@@ -1,14 +1,16 @@
 services:
   dev:
     image: git.talmage.dev/vibe/workspace:latest
+    tty: true
+    stdin_open: true
+    working_dir: /workspace
     volumes:
       - .:/workspace
-      - ./bash_history:/home/claude/.bash_history
+      - ./.bash.d:/home/claude/.bash.d
       - claude_dev_ssh:/home/claude/.ssh
       - claude_dev_login:/home/claude/.claude
-    working_dir: /workspace
-    stdin_open: true
-    tty: true
+    environment:
+      - HISTFILE=/home/claude/.bash.d/history
 
 volumes:
   claude_dev_ssh:
