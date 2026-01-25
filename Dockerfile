@@ -10,13 +10,19 @@ RUN apt-get update && \
         curl \
         git \
         htop \
+        locales \
         openssh-client \
         sudo \
         tmux \
         unzip \
         vim \
         zip \
+    && sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen \
+    && locale-gen \
     && rm -rf /var/lib/apt/lists/*
+
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
 
 RUN useradd -m -s /bin/bash claude && \
     echo "claude ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/claude && \
