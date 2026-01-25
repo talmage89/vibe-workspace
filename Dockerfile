@@ -22,9 +22,10 @@ RUN useradd -m -s /bin/bash claude && \
     chmod 0440 /etc/sudoers.d/claude
     
 COPY --chown=claude:claude config/ /home/claude/
-COPY --chmod=755 scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
 
-RUN mkdir -p /workspace && \
+RUN chmod 755 /usr/local/bin/entrypoint.sh && \
+    mkdir -p /workspace && \
     chown -R claude:claude /workspace && \
     touch /home/claude/.bash_history && \
     mkdir -p /home/claude/.ssh && chmod 700 /home/claude/.ssh && \
