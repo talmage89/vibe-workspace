@@ -42,9 +42,6 @@ RUN useradd -m -s /bin/bash claude && \
 RUN mkdir -p /workspace && \
     chown -R claude:claude /workspace
 
-COPY config/bashrc /home/claude/.bashrc
-RUN chown claude:claude /home/claude/.bashrc
-
 USER claude
 WORKDIR /workspace
 
