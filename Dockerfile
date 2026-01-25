@@ -1,30 +1,33 @@
 FROM debian:testing
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && \
     apt-get install -y \
+        bash-completion \
+        build-essential \
+        ca-certificates \
         curl \
         git \
-        ca-certificates \
-        build-essential \
-        wget \
-        vim \
-        less \
-        procps \
-        unzip \
-        zip \
-        tar \
         gzip \
-        locales \
-        tzdata \
-        sudo \
-        jq \
-        bash-completion \
-        tree \
         htop \
-        strace \
-        net-tools \
         iputils-ping \
+        jq \
+        less \
+        locales \
+        net-tools \
         openssh-client \
+        procps \
+        strace \
+        sudo \
+        tar \
+        tmux \
+        tree \
+        tzdata \
+        unzip \
+        vim \
+        wget \
+        zip \
     && rm -rf /var/lib/apt/lists/*
 
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
