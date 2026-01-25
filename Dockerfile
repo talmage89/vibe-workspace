@@ -20,16 +20,16 @@ RUN apt-get update && \
 RUN useradd -m -s /bin/bash claude && \
     echo "claude ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/claude && \
     chmod 0440 /etc/sudoers.d/claude
+    
+COPY --chown=claude:claude config/ /home/claude/
+COPY --chmod=755 scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
 
 RUN mkdir -p /workspace && \
     chown -R claude:claude /workspace && \
     touch /home/claude/.bash_history && \
-    cp -a ./config/. /home/claude/ && \
     mkdir -p /home/claude/.ssh && chmod 700 /home/claude/.ssh && \
     mkdir -p /home/claude/.claude && chmod 700 /home/claude/.claude && \
     chown -R claude:claude /home/claude
-
-COPY --chmod=755 scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
 
 USER claude
 WORKDIR /workspace
