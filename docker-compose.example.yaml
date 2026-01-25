@@ -9,7 +9,15 @@ services:
     working_dir: /workspace
     stdin_open: true
     tty: true
-    command: /bin/bash
+    entrypoint:
+      - /bin/bash
+      - -c
+      - |
+        sudo chown -R claude:claude /home/claude/.ssh 2>/dev/null || true
+        sudo chown -R claude:claude /home/claude/.claude 2>/dev/null || true
+        eval "$$(ssh-agent -s)" > /dev/null 2>&1
+        export SSH_AUTH_SOCK SSH_AGENT_PID
+        exec /bin/bash -i
 
 volumes:
   claude_dev_ssh:
