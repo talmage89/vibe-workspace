@@ -2,22 +2,13 @@ services:
   dev:
     image: git.talmage.dev/vibe/workspace:latest
     volumes:
-      - ./workspace:/workspace
+      - .:/workspace
       - ./bash_history:/home/claude/.bash_history
       - claude_dev_ssh:/home/claude/.ssh
       - claude_dev_login:/home/claude/.claude
     working_dir: /workspace
     stdin_open: true
     tty: true
-    entrypoint:
-      - /bin/bash
-      - -c
-      - |
-        sudo chown -R claude:claude /home/claude/.ssh 2>/dev/null || true
-        sudo chown -R claude:claude /home/claude/.claude 2>/dev/null || true
-        eval "$$(ssh-agent -s)" > /dev/null 2>&1
-        export SSH_AUTH_SOCK SSH_AGENT_PID
-        exec /bin/bash -i
 
 volumes:
   claude_dev_ssh:
