@@ -11,6 +11,7 @@ services:
       - claude_dev_login:/home/claude/.claude
     environment:
       - HISTFILE=/home/claude/.bash.d/history
+      - CLAUDE_CONFIG_DIR=/home/claude/.claude
 
 volumes:
   claude_dev_ssh:

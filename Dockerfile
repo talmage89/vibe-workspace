@@ -1,6 +1,7 @@
 FROM debian:testing
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV CLAUDE_CONFIG_DIR=/home/claude/.claude
 
 RUN apt-get update && \
     apt-get install -y \
