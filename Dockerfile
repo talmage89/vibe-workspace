@@ -30,6 +30,7 @@ RUN chmod 755 /usr/local/bin/entrypoint.sh && \
     mkdir -p /home/claude/.bash.d && \
     mkdir -p /home/claude/.ssh && chmod 700 /home/claude/.ssh && \
     mkdir -p /home/claude/.claude && chmod 700 /home/claude/.claude && \
+    echo 'for f in ~/.bashrc.d/*.bash; do [ -r "$f" ] && . "$f"; done' >> /home/claude/.bashrc && \
     chown -R claude:claude /home/claude
 
 USER claude
