@@ -5,7 +5,7 @@ services:
     stdin_open: true
     working_dir: /workspace
     volumes:
-      - .:/workspace
+      - ./workspace:/workspace
       - ./.bash.d:/home/claude/.bash.d
       - claude_dev_ssh:/home/claude/.ssh
       - claude_dev_login:/home/claude/.claude
