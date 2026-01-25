@@ -1,6 +1,6 @@
 services:
   dev:
-    image: registry/container:latest
+    image: git.talmage.dev/vibe/workspace:latest
     volumes:
       - ./workspace:/workspace
       - ./bash_history:/home/claude/.bash_history
