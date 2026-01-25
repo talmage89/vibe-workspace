@@ -1,0 +1,14 @@
+services:
+  dev:
+    image: registry/container:latest
+    volumes:
+      - ./workspace:/workspace
+      - ./bash_history:/home/claude/.bash_history
+      - claude_data:/home/claude/.claude
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+
+volumes:
+  claude_data:
