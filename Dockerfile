@@ -1,4 +1,4 @@
-FROM debian:testing
+FROM node:25-trixie
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV CLAUDE_CONFIG_DIR=/home/claude/.claude
@@ -6,12 +6,8 @@ ENV CLAUDE_CONFIG_DIR=/home/claude/.claude
 RUN apt-get update && \
     apt-get install -y \
         bash-completion \
-        ca-certificates \
-        curl \
-        git \
         htop \
         locales \
-        openssh-client \
         sudo \
         tmux \
         unzip \
