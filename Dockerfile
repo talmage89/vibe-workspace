@@ -1,4 +1,5 @@
 FROM node:25-trixie
+USER root
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV CLAUDE_CONFIG_DIR=/home/claude/.claude
