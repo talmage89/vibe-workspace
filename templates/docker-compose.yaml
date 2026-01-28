@@ -9,6 +9,8 @@ services:
       - ./.bash.d:/home/claude/.bash.d
       - claude_dev_ssh:/home/claude/.ssh
       - claude_dev_login:/home/claude/.claude
+      - type: tmpfs
+        target: /run/beads
     environment:
       - HISTFILE=/home/claude/.bash.d/history
       - CLAUDE_CONFIG_DIR=/home/claude/.claude
