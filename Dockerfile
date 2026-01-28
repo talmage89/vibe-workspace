@@ -37,10 +37,10 @@ RUN chmod 755 /usr/local/bin/entrypoint.sh && \
     echo 'for f in ~/.bashrc.d/*.bash; do [ -r "$f" ] && . "$f"; done' >> /home/claude/.bashrc && \
     chown -R claude:claude /home/claude
 
+RUN npm install -g @beads/bd
+
 USER claude
 WORKDIR /workspace
-
-RUN npm install -g @beads/bd
 RUN curl -fsSL https://claude.ai/install.sh | bash
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
