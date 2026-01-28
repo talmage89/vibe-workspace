@@ -40,6 +40,7 @@ RUN chmod 755 /usr/local/bin/entrypoint.sh && \
 USER claude
 WORKDIR /workspace
 
+RUN npm install -g @beads/bd
 RUN curl -fsSL https://claude.ai/install.sh | bash
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
