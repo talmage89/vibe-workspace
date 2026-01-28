@@ -9,7 +9,6 @@ services:
       - ./.bash.d:/home/claude/.bash.d
       - claude_dev_ssh:/home/claude/.ssh
       - claude_dev_login:/home/claude/.claude
-      - beads_state:/workspace/.beads
     environment:
       - HISTFILE=/home/claude/.bash.d/history
       - CLAUDE_CONFIG_DIR=/home/claude/.claude
@@ -19,4 +18,3 @@ volumes:
     name: claude_dev_ssh
   claude_dev_login:
     name: claude_dev_login
-  beads_state:
