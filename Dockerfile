@@ -26,9 +26,9 @@ RUN useradd -m -s /bin/bash claude && \
     chmod 0440 /etc/sudoers.d/claude
     
 COPY --chown=claude:claude config/ /home/claude/
-COPY scripts/ /usr/local/bin/
+COPY scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
 
-RUN chmod 755 /usr/local/bin/*.sh && \
+RUN chmod 755 /usr/local/bin/entrypoint.sh && \
     mkdir -p /workspace && \
     chown -R claude:claude /workspace && \
     mkdir -p /home/claude/.bash.d && \
