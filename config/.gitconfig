@@ -4,3 +4,8 @@
 [user]
     name = Claude
     email = claude@claude.com
+
+[alias]
+    coma = "!git add . && git commit"
+    logo = "!git log --oneline --graph --all"
+    reb = "!git fetch && git rebase origin/main"
